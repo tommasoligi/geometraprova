@@ -15,11 +15,17 @@
       --shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+    }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: var(--secondary);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
       background: var(--white);
@@ -63,14 +69,21 @@
       cursor: pointer;
     }
     main {
+      flex: 1 0 auto;
       min-height: 70vh;
     }
     .page {
       display: none;
-      animation: fadeIn 0.5s;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
     }
     .page.active {
       display: block;
+    }
+    .page.in-view {
+      opacity: 1;
+      transform: translateY(0);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(30px);}
@@ -262,29 +275,58 @@
       text-align: center;
       color: var(--accent);
     }
+    /* Footer */
     footer {
       background: var(--accent);
       color: var(--white);
-      padding: 1.2rem 2rem;
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      flex-shrink: 0;
     }
     .footer-content {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       max-width: 1100px;
       margin: 0 auto;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-    .footer-content nav a {
-      color: var(--white);
-      margin-left: 1.2rem;
+    .footer-section {
+      min-width: 180px;
+      margin-bottom: 1rem;
+    }
+    .footer-section h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #ffe5d0;
+    }
+    .footer-section a {
+      color: #ffe5d0;
+      text-decoration: none;
+      margin-right: 0.7rem;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .footer-nav a {
+      color: #ffe5d0;
+      margin-right: 1.2rem;
       text-decoration: none;
       font-size: 1rem;
       transition: text-decoration 0.2s;
     }
-    .footer-content nav a:hover {
+    .footer-nav a:hover {
       text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      color: #ffe5d0;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
     /* Responsive */
     @media (max-width: 900px) {
@@ -295,14 +337,14 @@
       .hero-images {
         grid-template-columns: 1fr;
       }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
     @media (max-width: 700px) {
       .navbar {
         padding: 1rem;
-      }
-      .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
       }
     }
     @media (max-width: 600px) {
@@ -412,23 +454,42 @@
           <div id="formMessage"></div>
         </form>
         <div class="contact-info">
-          <p><strong>Email:</strong> info@geometraligisimone.it</p>
-          <p><strong>Telefono:</strong> +39 333 1234567</p>
-          <p><strong>Indirizzo:</strong> Via Roma 10, 00100 Roma</p>
-          <p><strong>Orari:</strong> Lun-Ven 9:00-18:00</p>
+          <p><strong>Indirizzo:</strong> Via del Progresso 34, 61122 Pesaro PU, Italia</p>
+          <p><strong>Email:</strong> info@simoneligi.it</p>
+          <p><strong>Telefono:</strong> 0721 202316</p>
+          <p><strong>Cellulare:</strong> +39 335 541 8693</p>
         </div>
       </section>
     </div>
   </main>
   <footer>
     <div class="footer-content">
-      <span>&copy; 2025 Geometra Ligi Simone</span>
-      <nav>
+      <div class="footer-section">
+        <h4>Contatti</h4>
+        <p>Via del Progresso 34<br>61122 Pesaro PU, Italia</p>
+        <p>Email: <a href="mailto:info@simoneligi.it">info@simoneligi.it</a></p>
+        <p>Tel: <a href="tel:0721202316">0721 202316</a></p>
+        <p>Cell: <a href="tel:+393355418693">+39 335 541 8693</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Orari</h4>
+        <p>Lunedì-Venerdì:<br>8:30-13:30, 15:30-19:00<br>Sabato e Domenica: chiuso</p>
+      </div>
+      <div class="footer-section">
+        <h4>Social</h4>
+        <a href="https://wa.me/393669510843" target="_blank" title="WhatsApp" rel="noopener">🟢 WhatsApp</a>
+        <a href="https://www.facebook.com/simone.ligi.142" target="_blank" title="Facebook" rel="noopener">🔵 Facebook</a>
+      </div>
+      <div class="footer-section footer-nav">
+        <h4>Navigazione</h4>
         <a href="#" onclick="navigateTo('home', event)">Home</a>
         <a href="#" onclick="navigateTo('services', event)">Servizi</a>
         <a href="#" onclick="navigateTo('about', event)">Profilo</a>
         <a href="#" onclick="navigateTo('contact', event)">Contatti</a>
-      </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Geometra Ligi Simone. Tutti i diritti riservati.
     </div>
   </footer>
   <script>
@@ -530,6 +591,22 @@
       formMessage.style.color = "#2e7d32";
       form.reset();
     });
+
+    // Animazioni di entrata delle sezioni
+    function animateSections() {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.page').forEach(page => {
+        observer.observe(page);
+      });
+    }
+    // Esegui animazioni dopo caricamento
+    window.addEventListener('DOMContentLoaded', animateSections);
   </script>
 </body>
 </html>
