@@ -41,6 +41,7 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 1rem 2rem;
+      position: relative;
     }
     .logo {
       font-size: 1.5rem;
@@ -51,6 +52,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      transition: all 0.3s;
     }
     .nav-links li a {
       color: var(--text);
@@ -67,6 +69,33 @@
       display: none;
       font-size: 2rem;
       cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--primary);
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 1rem;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--white);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 180px;
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        z-index: 200;
+        padding: 1rem 0;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
     }
     main {
       flex: 1 0 auto;
@@ -144,6 +173,20 @@
     .hero-images img:hover {
       transform: scale(1.05);
     }
+    @media (max-width: 900px) {
+      .hero, .about-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-images {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .hero {
+        padding: 2rem 1rem 1rem 1rem;
+      }
+    }
     /* Progetti Realizzati */
     .projects {
       padding: 3rem 2rem;
@@ -194,6 +237,9 @@
     @media (max-width: 700px) {
       .projects-list {
         grid-template-columns: 1fr;
+      }
+      .project-card img {
+        height: 140px;
       }
     }
     /* Servizi dinamici e ordinati */
@@ -371,6 +417,7 @@
     .footer-section {
       min-width: 180px;
       margin-bottom: 1rem;
+      flex: 1 1 220px;
     }
     .footer-section h4 {
       margin-bottom: 0.5rem;
@@ -435,10 +482,17 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .footer-section {
+        min-width: 0;
+        width: 100%;
+      }
     }
     @media (max-width: 700px) {
       .map-container {
         max-width: 100%;
+      }
+      .footer-section {
+        margin-bottom: 1.5rem;
       }
     }
   </style>
@@ -446,14 +500,14 @@
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">Geometra Ligi Simone</div>
+      <div class="logo">Ligi Simone</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#" class="active" onclick="navigateTo('home', event)">Home</a></li>
         <li><a href="#" onclick="navigateTo('services', event)">Servizi</a></li>
         <li><a href="#" onclick="navigateTo('about', event)">Profilo</a></li>
         <li><a href="#" onclick="navigateTo('contact', event)">Contatti</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">&#9776;</div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
     </nav>
   </header>
   <main>
@@ -464,7 +518,14 @@
           <h1>Geometra Ligi Simone</h1>
           <p>Esperienza, tecnologia e assistenza completa per ogni esigenza catastale, edilizia e topografica.</p>
           <a href="#" class="cta-btn" onclick="navigateTo('contact', event)">Richiedi una consulenza</a>
-          <!-- Progetti Realizzati -->
+        </div>
+        <div class="hero-images">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Strumenti" />
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Planimetrie" />
+          <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Cantiere" />
+        </div>
+      </section>
+      <!-- Progetti Realizzati SOLO in home -->
       <section class="projects">
         <h2>Progetti realizzati</h2>
         <div class="projects-list">
@@ -489,13 +550,6 @@
               <p>Consulenza tecnica e pratiche catastali per la suddivisione di beni immobili tra eredi.</p>
             </div>
           </div>
-        </div>
-      </section>
-        </div>
-        <div class="hero-images">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Strumenti" />
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Planimetrie" />
-          <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Cantiere" />
         </div>
       </section>
     </div>
@@ -554,6 +608,22 @@
           <button type="submit" class="cta-btn">Invia richiesta</button>
           <div id="formMessage"></div>
         </form>
+        <div class="contact-info">
+          <p><strong>Indirizzo:</strong> Via del Progresso 34, 61122 Pesaro PU, Italia</p>
+          <p><strong>Email:</strong> info@simoneligi.it</p>
+          <p><strong>Telefono:</strong> 0721 202316</p>
+          <p><strong>Cellulare:</strong> +39 335 541 8693</p>
+          <p><strong>Orari:</strong></p>
+          <ul style="list-style:none; padding-left:0;">
+            <li>Lunedì: 9:00 - 13:30, 15:30 - 19:00</li>
+            <li>Martedì: 9:00 - 13:30, 15:30 - 19:00</li>
+            <li>Mercoledì: 9:00 - 13:30, 15:30 - 19:00</li>
+            <li>Giovedì: 9:00 - 13:30, 15:30 - 19:00</li>
+            <li>Venerdì: 9:00 - 13:30, 15:30 - 19:00</li>
+            <li>Sabato: Chiuso</li>
+            <li>Domenica: Chiuso</li>
+          </ul>
+        </div>
       </section>
     </div>
   </main>
@@ -561,6 +631,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <h4>Contatti</h4>
+        <p>Via del Progresso 34<br>61122 Pesaro PU, Italia</p>
         <p>Email: <a href="mailto:info@simoneligi.it">info@simoneligi.it</a></p>
         <p>Tel: <a href="tel:0721202316">0721 202316</a></p>
         <p>Cell: <a href="tel:+393355418693">+39 335 541 8693</a></p>
@@ -612,6 +683,13 @@
             title="Mappa Geometra Ligi Simone"
           ></iframe>
         </div>
+      </div>
+      <div class="footer-section footer-nav">
+        <h4>Navigazione</h4>
+        <a href="#" onclick="navigateTo('home', event)">Home</a>
+        <a href="#" onclick="navigateTo('services', event)">Servizi</a>
+        <a href="#" onclick="navigateTo('about', event)">Profilo</a>
+        <a href="#" onclick="navigateTo('contact', event)">Contatti</a>
       </div>
     </div>
     <div class="footer-bottom">
