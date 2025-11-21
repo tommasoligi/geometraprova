@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -27,33 +28,6 @@
       display: flex;
       flex-direction: column;
     }
-    .header-bg {
-      background: url('https://www.transparenttextures.com/patterns/blueprint.png'), linear-gradient(120deg, #fbeee0 80%, #e0d6c3 100%);
-      background-size: 300px, cover;
-      background-repeat: repeat, no-repeat;
-      padding: 2.5rem 0 1.5rem 0;
-      text-align: center;
-      position: relative;
-    }
-    .header-bg .logo {
-      font-size: 2.2rem;
-      color: var(--primary);
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      background: rgba(255,255,255,0.7);
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: var(--radius);
-    }
-    @media (max-width: 700px) {
-      .header-bg {
-        padding: 1.2rem 0 0.7rem 0;
-      }
-      .header-bg .logo {
-        font-size: 1.3rem;
-        padding: 0.3rem 0.7rem;
-      }
-    }
     header {
       background: var(--white);
       box-shadow: var(--shadow);
@@ -71,16 +45,10 @@
       position: relative;
     }
     .logo {
-      font-size: 2.2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
       color: var(--primary);
-      letter-spacing: 1px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      background: rgba(255,255,255,0.7);
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: var(--radius);
     }
-    .navbar .logo { display: none; }
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -143,16 +111,13 @@
     .page.active {
       display: block;
     }
-    /* Animazioni dinamiche per le sezioni */
-    .section-animate in-view {
-      opacity: 0;
-      transform: translateY(60px) scale(0.98);
-      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
-      will-change: opacity, transform;
-    }
-    .section-animate in-view.in-view {
+    .page.in-view {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
     }
     /* Home */
     .hero {
@@ -513,30 +478,6 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-    /* Orari tabella elegante */
-    .orari-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(255,255,255,0.07);
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-top: 0.5rem;
-      font-size: 1rem;
-    }
-    .orari-table td {
-      padding: 0.3rem 0.7rem;
-      color: #ffe5d0;
-      text-align: left;
-      vertical-align: middle;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .orari-table tr:last-child td {
-      border-bottom: none;
-    }
-    .orari-icona {
-      margin-right: 0.3em;
-      font-size: 1.1em;
-    }
     @media (max-width: 900px) {
       .footer-content {
         flex-direction: column;
@@ -558,11 +499,9 @@
   </style>
 </head>
 <body>
-  <div class="header-bg">
-    <span class="logo">Geometra Ligi Simone</span>
-  </div>
   <header>
     <nav class="navbar">
+      <div class="logo">Geometra Ligi Simone</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#" class="active" onclick="navigateTo('home', event)">Home</a></li>
         <li><a href="#" onclick="navigateTo('services', event)">Servizi</a></li>
@@ -575,7 +514,7 @@
   <main>
     <!-- Home -->
     <div class="page active" id="home">
-      <section class="hero section-animate in-view">
+      <section class="hero">
         <div class="hero-text">
           <h1>Geometra Ligi Simone</h1>
           <p>Esperienza, tecnologia e assistenza completa per ogni esigenza catastale, edilizia e topografica.</p>
@@ -588,7 +527,7 @@
         </div>
       </section>
       <!-- Progetti Realizzati SOLO in home -->
-      <section class="projects section-animate in-view">
+      <section class="projects">
         <h2>Progetti realizzati</h2>
         <div class="projects-list">
           <div class="project-card">
@@ -617,7 +556,7 @@
     </div>
     <!-- Servizi -->
     <div class="page" id="services">
-      <section class="services section-animate in-view">
+      <section class="services">
         <h2>I miei servizi</h2>
         <div class="service-list" id="serviceList">
           <!-- Servizi caricati da JS -->
@@ -626,7 +565,7 @@
     </div>
     <!-- Profilo -->
     <div class="page" id="about">
-      <section class="about section-animate in-view ">
+      <section class="about">
         <h2>Profilo professionale</h2>
         <div class="about-content">
           <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Geometra Ligi Simone" />
@@ -644,7 +583,7 @@
     </div>
     <!-- Contatti -->
     <div class="page" id="contact">
-      <section class="contact section-animate in-view">
+      <section class="contact">
         <h2>Contattami</h2>
         <form id="contactForm" novalidate>
           <div class="form-group">
@@ -691,16 +630,16 @@
           </a>
         </div>
       </div>
-          <div class="footer-section">
-            <h4>Orari</h4>
-            <p>Lunedì: 9:00 - 19:00</p>
-            <p>Martedì: 9:00 - 19:00</p>
-            <p>Mercoledì: 9:00 - 19:00</p>
-            <p>Giovedì: 9:00 - 19:00</p>
-            <p>Venerdì: 9:00 - 19:00</p>
-            <p>Sabato: Chiuso</p>
-            <p>Domenica: Chiuso</p>
-          </div>
+      <div class="footer-section">
+        <h4>Orari</h4>
+        <p><strong>Lunedì:</strong> 9:00 - 19:00</p>
+        <p><strong>Martedì:</strong> 9:00 - 19:00</p>
+        <p><strong>Mercoledì:</strong> 9:00 - 19:00</p>
+        <p><strong>Giovedì:</strong> 9:00 - 19:00</p>
+        <p><strong>Venerdì:</strong> 9:00 - 19:00</p>
+        <p><strong>Sabato:</strong> Chiuso</p>
+        <p><strong>Domenica:</strong> Chiuso</p>
+      </div>
       <div class="footer-section">
         <h4>Social</h4>
         <div class="social-icons">
@@ -738,28 +677,64 @@
     // SPA Navigation
     function navigateTo(pageId, event) {
       if(event) event.preventDefault();
+      // Hide all pages
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      // Show selected page
       document.getElementById(pageId).classList.add('active');
+      // Update nav active state
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
       document.querySelectorAll('.nav-links a').forEach(a => {
         if(a.getAttribute('onclick') && a.getAttribute('onclick').includes(pageId)) {
           a.classList.add('active');
         }
       });
+      // Close mobile menu if open
       document.getElementById('navLinks').classList.remove('open');
       window.scrollTo({top:0,behavior:'smooth'});
     }
+
+    // Mobile menu
     document.getElementById("hamburger").addEventListener("click", function() {
       document.getElementById("navLinks").classList.toggle("open");
     });
+
+    // Servizi dinamici e ordinati
     const services = [
-      { icon: "📐", name: "Pratiche Catastali", desc: "Volture, visure, planimetrie, accatastamenti e variazioni." },
-      { icon: "🏗️", name: "Pratiche Edilizie", desc: "CILA, SCIA, permessi di costruire, sanatorie e condoni." },
-      { icon: "🗺️", name: "Rilievi Topografici", desc: "Rilievi GPS, laser scanner, tracciamenti e frazionamenti." },
-      { icon: "📊", name: "Consulenza Tecnica", desc: "Assistenza per successioni, divisioni, perizie e stime." },
-      { icon: "📝", name: "Visure e Planimetrie", desc: "Recupero documenti catastali e planimetrie aggiornate." },
-      { icon: "🏠", name: "Successioni", desc: "Gestione completa delle pratiche di successione." },
-      { icon: "💡", name: "Pratiche ENEA", desc: "Gestione e invio delle pratiche ENEA per detrazioni fiscali su interventi di riqualificazione energetica e ristrutturazione edilizia, come previsto dalla normativa vigente." }
+      {
+        icon: "📐",
+        name: "Pratiche Catastali",
+        desc: "Volture, visure, planimetrie, accatastamenti e variazioni."
+      },
+      {
+        icon: "🏗️",
+        name: "Pratiche Edilizie",
+        desc: "CILA, SCIA, permessi di costruire, sanatorie e condoni."
+      },
+      {
+        icon: "🗺️",
+        name: "Rilievi Topografici",
+        desc: "Rilievi GPS, laser scanner, tracciamenti e frazionamenti."
+      },
+      {
+        icon: "📊",
+        name: "Consulenza Tecnica",
+        desc: "Assistenza per successioni, divisioni, perizie e stime."
+      },
+      {
+        icon: "📝",
+        name: "Visure e Planimetrie",
+        desc: "Recupero documenti catastali e planimetrie aggiornate."
+      },
+      {
+        icon: "🏠",
+        name: "Successioni",
+        desc: "Gestione completa delle pratiche di successione."
+      },
+      {
+        icon: "💡",
+        name: "Pratiche ENEA",
+        desc: "Gestione e invio delle pratiche ENEA per detrazioni fiscali su interventi di riqualificazione energetica e ristrutturazione edilizia, come previsto dalla normativa vigente."
+      }
     ];
     function renderServices() {
       const list = document.getElementById("serviceList");
@@ -776,6 +751,7 @@
       });
     }
     renderServices();
+
     // Form validation
     const form = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
@@ -801,6 +777,7 @@
       formMessage.style.color = "#2e7d32";
       form.reset();
     });
+
     // Animazioni di entrata delle sezioni
     function animateSections() {
       const observer = new IntersectionObserver(entries => {
@@ -810,10 +787,11 @@
           }
         });
       }, { threshold: 0.15 });
-      document.querySelectorAll('.section-animate in-view').forEach(section => {
-        observer.observe(section);
+      document.querySelectorAll('.page').forEach(page => {
+        observer.observe(page);
       });
     }
+    // Esegui animazioni dopo caricamento
     window.addEventListener('DOMContentLoaded', animateSections);
   </script>
 </body>
