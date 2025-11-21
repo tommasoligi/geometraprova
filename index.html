@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geometra Ligi Simone</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Ligi Simone</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Servizi</a></li>
+        <li><a href="#about">Profilo</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Geometra Ligi Simone</h1>
+        <p>Esperienza, tecnologia e assistenza completa per ogni esigenza catastale, edilizia e topografica.</p>
+        <a href="#contact" class="cta-btn">Richiedi una consulenza</a>
+      </div>
+      <div class="hero-images">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Strumenti" />
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Planimetrie" />
+        <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Cantiere" />
+      </div>
+    </section>
+    <section class="services" id="services">
+      <h2>I miei servizi</h2>
+      <div class="service-filters">
+        <button class="filter-btn active" data-category="all">Tutti</button>
+        <button class="filter-btn" data-category="catastali">Catastali</button>
+        <button class="filter-btn" data-category="edilizi">Edilizi</button>
+        <button class="filter-btn" data-category="topografici">Topografici</button>
+        <button class="filter-btn" data-category="consulenza">Consulenza</button>
+      </div>
+      <div class="service-list" id="serviceList">
+        <!-- Servizi caricati da JS -->
+      </div>
+    </section>
+    <section class="why-choose">
+      <h2>Perché scegliere me</h2>
+      <div class="why-cards">
+        <div class="why-card">
+          <h3>Esperienza</h3>
+          <p>Oltre 15 anni di attività nel settore tecnico e catastale.</p>
+        </div>
+        <div class="why-card">
+          <h3>Tecnologia</h3>
+          <p>Strumentazione all’avanguardia per rilievi precisi e rapidi.</p>
+        </div>
+        <div class="why-card">
+          <h3>Assistenza</h3>
+          <p>Supporto completo dalla consulenza alla pratica finale.</p>
+        </div>
+      </div>
+    </section>
+    <section class="about" id="about">
+      <h2>Profilo professionale</h2>
+      <div class="about-content">
+        <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=400&q=80" alt="Geometra Ligi Simone" />
+        <div>
+          <h3>Ligi Simone</h3>
+          <p>Geometra abilitato, iscritto all’albo, specializzato in pratiche catastali, edilizie e rilievi topografici. Attento alle esigenze del cliente e costantemente aggiornato sulle normative.</p>
+          <ul>
+            <li>Laurea in Tecniche per l’Edilizia</li>
+            <li>Certificazioni in rilievi GPS e laser scanner</li>
+            <li>Esperienza in pratiche urbanistiche e successioni</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <h2>Contattami</h2>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefono</label>
+          <input type="tel" id="phone" name="phone" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Oggetto</label>
+          <input type="text" id="subject" name="subject" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Messaggio</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="cta-btn">Invia richiesta</button>
+        <div id="formMessage"></div>
+      </form>
+      <div class="contact-info">
+        <p><strong>Email:</strong> info@geometraligisimone.it</p>
+        <p><strong>Telefono:</strong> +39 333 1234567</p>
+        <p><strong>Indirizzo:</strong> Via Roma 10, 00100 Roma</p>
+        <p><strong>Orari:</strong> Lun-Ven 9:00-18:00</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <span>&copy; 2025 Geometra Ligi Simone</span>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Servizi</a>
+        <a href="#about">Profilo</a>
+        <a href="#contact">Contatti</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
