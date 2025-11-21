@@ -144,7 +144,7 @@
     .hero-images img:hover {
       transform: scale(1.05);
     }
-    /* Progetti realizzati */
+    /* Progetti Realizzati */
     .projects {
       padding: 3rem 2rem;
       background: var(--secondary);
@@ -196,7 +196,7 @@
         grid-template-columns: 1fr;
       }
     }
-    /* Servizi */
+    /* Servizi dinamici e ordinati */
     .services {
       padding: 3rem 2rem;
       background: var(--secondary);
@@ -208,24 +208,35 @@
     }
     .service-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       margin-top: 2rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 900px) {
+      .service-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .service-list {
+        grid-template-columns: 1fr;
+      }
     }
     .service-card {
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       min-height: 220px;
-    }
-    .service-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 24px rgba(184,92,56,0.12);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.7s forwards;
     }
     .service-card .icon {
       font-size: 2rem;
@@ -240,6 +251,19 @@
       font-size: 1rem;
       color: var(--text);
     }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+    .service-card:nth-child(4) { animation-delay: 0.4s; }
+    .service-card:nth-child(5) { animation-delay: 0.5s; }
+    .service-card:nth-child(6) { animation-delay: 0.6s; }
+    .service-card:nth-child(7) { animation-delay: 0.7s; }
     /* Profilo */
     .about {
       padding: 3rem 2rem;
@@ -348,23 +372,6 @@
       min-width: 180px;
       margin-bottom: 1rem;
     }
-    .social-icons {
-      display: flex;
-      gap: 0.7rem;
-      align-items: center;
-      margin-top: 0.5rem;
-    }
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      font-size: 1.5rem;
-      color: #ffe5d0;
-      transition: color 0.2s;
-      text-decoration: none;
-    }
-    .social-icons a:hover {
-      color: #fff;
-    }
     .footer-section h4 {
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
@@ -398,43 +405,40 @@
       margin-top: 0.5rem;
       padding-bottom: 0.5rem;
     }
-    /* Responsive */
+    .social-icons {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #ffe5d0;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .social-icons a:hover {
+      color: #fff;
+    }
+    .map-container {
+      width: 100%;
+      max-width: 320px;
+      margin-top: 0.5rem;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
     @media (max-width: 900px) {
-      .hero, .about-content {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .hero-images {
-        grid-template-columns: 1fr;
-      }
       .footer-content {
         flex-direction: column;
         align-items: flex-start;
       }
     }
     @media (max-width: 700px) {
-      .navbar {
-        padding: 1rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background: var(--white);
-        position: absolute;
-        top: 60px;
-        right: 2rem;
-        width: 180px;
-        box-shadow: var(--shadow);
-        border-radius: var(--radius);
-        z-index: 200;
-      }
-      .nav-links.open {
-        display: flex;
-      }
-      .hamburger {
-        display: block;
+      .map-container {
+        max-width: 100%;
       }
     }
   </style>
@@ -442,7 +446,7 @@
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">Ligi Simone</div>
+      <div class="logo">Geometra Ligi Simone</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#" class="active" onclick="navigateTo('home', event)">Home</a></li>
         <li><a href="#" onclick="navigateTo('services', event)">Servizi</a></li>
@@ -467,34 +471,34 @@
           <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Cantiere" />
         </div>
       </section>
+      <!-- Progetti Realizzati -->
+      <section class="projects">
+        <h2>Progetti realizzati</h2>
+        <div class="projects-list">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1503389152951-9c3d0c6b7a5a?auto=format&fit=crop&w=600&q=80" alt="Rilievo topografico" />
+            <div>
+              <h3>Rilievo topografico per nuova lottizzazione</h3>
+              <p>Esecuzione di rilievi GPS e laser scanner per la progettazione di una nuova area residenziale a Pesaro.</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Pratica edilizia" />
+            <div>
+              <h3>Pratica edilizia per ristrutturazione</h3>
+              <p>Gestione completa delle pratiche edilizie e direzione lavori per la ristrutturazione di un edificio storico.</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" alt="Successione e divisione" />
+            <div>
+              <h3>Successione e divisione ereditaria</h3>
+              <p>Consulenza tecnica e pratiche catastali per la suddivisione di beni immobili tra eredi.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-    <!-- Progetti Realizzati -->
-<section class="projects" style="padding:3rem 2rem; background: var(--secondary);">
-  <h2 style="text-align:center; color:var(--primary); margin-bottom:2rem;">Progetti realizzati</h2>
-  <div class="projects-list" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; max-width:1100px; margin:0 auto;">
-    <div class="project-card" style="background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1503389152951-9c3d0c6b7a5a?auto=format&fit=crop&w=600&q=80" alt="Rilievo topografico" style="width:100%; height:180px; object-fit:cover;">
-      <div style="padding:1.2rem;">
-        <h3 style="color:var(--accent); margin-bottom:0.5rem;">Rilievo topografico per nuova lottizzazione</h3>
-        <p style="color:var(--text); font-size:1rem;">Esecuzione di rilievi GPS e laser scanner per la progettazione di una nuova area residenziale a Pesaro.</p>
-      </div>
-    </div>
-    <div class="project-card" style="background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Pratica edilizia" style="width:100%; height:180px; object-fit:cover;">
-      <div style="padding:1.2rem;">
-        <h3 style="color:var(--accent); margin-bottom:0.5rem;">Pratica edilizia per ristrutturazione</h3>
-        <p style="color:var(--text); font-size:1rem;">Gestione completa delle pratiche edilizie e direzione lavori per la ristrutturazione di un edificio storico.</p>
-      </div>
-    </div>
-    <div class="project-card" style="background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" alt="Successione e divisione" style="width:100%; height:180px; object-fit:cover;">
-      <div style="padding:1.2rem;">
-        <h3 style="color:var(--accent); margin-bottom:0.5rem;">Successione e divisione ereditaria</h3>
-        <p style="color:var(--text); font-size:1rem;">Consulenza tecnica e pratiche catastali per la suddivisione di beni immobili tra eredi.</p>
-      </div>
-    </div>
-  </div>
-</section>
     <!-- Servizi -->
     <div class="page" id="services">
       <section class="services">
@@ -550,52 +554,70 @@
           <button type="submit" class="cta-btn">Invia richiesta</button>
           <div id="formMessage"></div>
         </form>
-        <div class="contact-info">
-          <p><strong>Indirizzo:</strong> Via del Progresso 34, 61122 Pesaro PU, Italia</p>
-          <p><strong>Email:</strong> info@simoneligi.it</p>
-          <p><strong>Telefono:</strong> 0721 202316</p>
-          <p><strong>Cellulare:</strong> +39 335 541 8693</p>
-        </div>
       </section>
     </div>
   </main>
-<footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h4>Contatti</h4>
-      <p>Via del Progresso 34<br>61122 Pesaro PU, Italia</p>
-      <p>Email: <a href="mailto:info@simoneligi.it">info@simoneligi.it</a></p>
-      <p>Tel: <a href="tel:0721202316">0721 202316</a></p>
-      <p>Cell: <a href="tel:+393355418693">+39 335 541 8693</a></p>
-    </div>
-    <div class="footer-section">
-      <h4>Orari</h4>
-      <ul style="list-style:none; padding-left:0;">
-        <li>Lunedì: 9:00 - 13:30, 15:30 - 19:00</li>
-        <li>Martedì: 9:00 - 13:30, 15:30 - 19:00</li>
-        <li>Mercoledì: 9:00 - 13:30, 15:30 - 19:00</li>
-        <li>Giovedì: 9:00 - 13:30, 15:30 - 19:00</li>
-        <li>Venerdì: 9:00 - 13:30, 15:30 - 19:00</li>
-        <li>Sabato: Chiuso</li>
-        <li>Domenica: Chiuso</li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Social</h4>
-      <div class="social-icons">
-        <a href="https://wa.me/393355418693" target="_blank" title="WhatsApp" rel="noopener" aria-label="WhatsApp">
-          <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.74 6.41l-1.84 6.73a1.07 1.07 0 0 0 1.31 1.31l6.73-1.84a12.77 12.77 0 0 0 6.41 1.74c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.8-12.8-12.8zm0 23.04c-2.01 0-3.99-.53-5.72-1.53l-.41-.24-4.01 1.1 1.1-4.01-.24-.41a10.7 10.7 0 1 1 9.28 5.09zm6.01-7.23c-.33-.17-1.97-.97-2.27-1.08-.3-.11-.52-.17-.74.17-.22.33-.85 1.08-1.04 1.3-.19.22-.38.25-.71.08-.33-.17-1.39-.51-2.65-1.62-.98-.87-1.64-1.94-1.83-2.27-.19-.33-.02-.51.15-.68.15-.15.33-.38.5-.57.17-.19.22-.33.33-.55.11-.22.06-.41-.03-.58-.09-.17-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57-.19-.01-.41-.01-.63-.01-.22 0-.58.08-.88.41-.3.33-1.15 1.12-1.15 2.73 0 1.61 1.18 3.17 1.35 3.39.17.22 2.32 3.54 5.63 4.83.79.34 1.41.54 1.89.69.79.25 1.51.22 2.08.13.64-.1 1.97-.8 2.25-1.57.28-.77.28-1.43.2-1.57-.08-.14-.3-.22-.63-.39z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/simone.ligi.142" target="_blank" title="Facebook" rel="noopener" aria-label="Facebook">
-          <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M29 0h-26c-1.654 0-3 1.346-3 3v26c0 1.654 1.346 3 3 3h13v-12h-4v-5h4v-3.5c0-4.136 2.522-6.5 6.377-6.5 1.849 0 3.623.138 4.123.2v4.8h-2.25c-1.762 0-2.25.838-2.25 2.062v2.438h4.5l-1 5h-3.5v12h7c1.654 0 3-1.346 3-3v-26c0-1.654-1.346-3-3-3z"/></svg>
-        </a>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contatti</h4>
+        <p>Email: <a href="mailto:info@simoneligi.it">info@simoneligi.it</a></p>
+        <p>Tel: <a href="tel:0721202316">0721 202316</a></p>
+        <p>Cell: <a href="tel:+393355418693">+39 335 541 8693</a></p>
+        <div class="social-icons">
+          <a href="https://wa.me/393355418693" target="_blank" title="WhatsApp" rel="noopener" aria-label="WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.74 6.41l-1.84 6.73a1.07 1.07 0 0 0 1.31 1.31l6.73-1.84a12.77 12.77 0 0 0 6.41 1.74c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.8-12.8-12.8zm0 23.04c-2.01 0-3.99-.53-5.72-1.53l-.41-.24-4.01 1.1 1.1-4.01-.24-.41a10.7 10.7 0 1 1 9.28 5.09zm6.01-7.23c-.33-.17-1.97-.97-2.27-1.08-.3-.11-.52-.17-.74.17-.22.33-.85 1.08-1.04 1.3-.19.22-.38.25-.71.08-.33-.17-1.39-.51-2.65-1.62-.98-.87-1.64-1.94-1.83-2.27-.19-.33-.02-.51.15-.68.15-.15.33-.38.5-.57.17-.19.22-.33.33-.55.11-.22.06-.41-.03-.58-.09-.17-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57-.19-.01-.41-.01-.63-.01-.22 0-.58.08-.88.41-.3.33-1.15 1.12-1.15 2.73 0 1.61 1.18 3.17 1.35 3.39.17.22 2.32 3.54 5.63 4.83.79.34 1.41.54 1.89.69.79.25 1.51.22 2.08.13.64-.1 1.97-.8 2.25-1.57.28-.77.28-1.43.2-1.57-.08-.14-.3-.22-.63-.39z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/simone.ligi.142" target="_blank" title="Facebook" rel="noopener" aria-label="Facebook">
+            <!-- Facebook SVG -->
+            <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M29 0h-26c-1.654 0-3 1.346-3 3v26c0 1.654 1.346 3 3 3h13v-12h-4v-5h4v-3.5c0-4.136 2.522-6.5 6.377-6.5 1.849 0 3.623.138 4.123.2v4.8h-2.25c-1.762 0-2.25.838-2.25 2.062v2.438h4.5l-1 5h-3.5v12h7c1.654 0 3-1.346 3-3v-26c0-1.654-1.346-3-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Orari</h4>
+        <p><strong>Lunedì:</strong> 9:00 - 13:30, 15:30 - 19:00</p>
+        <p><strong>Martedì:</strong> 9:00 - 13:30, 15:30 - 19:00</p>
+        <p><strong>Mercoledì:</strong> 9:00 - 13:30, 15:30 - 19:00</p>
+        <p><strong>Giovedì:</strong> 9:00 - 13:30, 15:30 - 19:00</p>
+        <p><strong>Venerdì:</strong> 9:00 - 13:30, 15:30 - 19:00</p>
+        <p><strong>Sabato:</strong> Chiuso</p>
+        <p><strong>Domenica:</strong> Chiuso</p>
+      </div>
+      <div class="footer-section">
+        <h4>Social</h4>
+        <div class="social-icons">
+          <a href="https://wa.me/393355418693" target="_blank" title="WhatsApp" rel="noopener" aria-label="WhatsApp">
+            <!-- WhatsApp SVG -->
+            <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.74 6.41l-1.84 6.73a1.07 1.07 0 0 0 1.31 1.31l6.73-1.84a12.77 12.77 0 0 0 6.41 1.74c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.8-12.8-12.8zm0 23.04c-2.01 0-3.99-.53-5.72-1.53l-.41-.24-4.01 1.1 1.1-4.01-.24-.41a10.7 10.7 0 1 1 9.28 5.09zm6.01-7.23c-.33-.17-1.97-.97-2.27-1.08-.3-.11-.52-.17-.74.17-.22.33-.85 1.08-1.04 1.3-.19.22-.38.25-.71.08-.33-.17-1.39-.51-2.65-1.62-.98-.87-1.64-1.94-1.83-2.27-.19-.33-.02-.51.15-.68.15-.15.33-.38.5-.57.17-.19.22-.33.33-.55.11-.22.06-.41-.03-.58-.09-.17-.74-1.78-1.01-2.44-.27-.65-.54-.56-.74-.57-.19-.01-.41-.01-.63-.01-.22 0-.58.08-.88.41-.3.33-1.15 1.12-1.15 2.73 0 1.61 1.18 3.17 1.35 3.39.17.22 2.32 3.54 5.63 4.83.79.34 1.41.54 1.89.69.79.25 1.51.22 2.08.13.64-.1 1.97-.8 2.25-1.57.28-.77.28-1.43.2-1.57-.08-.14-.3-.22-.63-.39z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/simone.ligi.142" target="_blank" title="Facebook" rel="noopener" aria-label="Facebook">
+            <!-- Facebook SVG -->
+            <svg width="1.5em" height="1.5em" viewBox="0 0 32 32" fill="currentColor"><path d="M29 0h-26c-1.654 0-3 1.346-3 3v26c0 1.654 1.346 3 3 3h13v-12h-4v-5h4v-3.5c0-4.136 2.522-6.5 6.377-6.5 1.849 0 3.623.138 4.123.2v4.8h-2.25c-1.762 0-2.25.838-2.25 2.062v2.438h4.5l-1 5h-3.5v12h7c1.654 0 3-1.346 3-3v-26c0-1.654-1.346-3-3-3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Dove trovarci</h4>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps?q=Via+del+Progresso+34,+61122+Pesaro+PU,+Italia&output=embed"
+            width="100%"
+            height="180"
+            style="border:0; border-radius:10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mappa Geometra Ligi Simone"
+          ></iframe>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2025 Geometra Ligi Simone. Tutti i diritti riservati.
-  </div>
-</footer>
+    <div class="footer-bottom">
+      &copy; 2025 Geometra Ligi Simone. Tutti i diritti riservati.
+    </div>
+  </footer>
   <script>
     // SPA Navigation
     function navigateTo(pageId, event) {
@@ -621,7 +643,7 @@
       document.getElementById("navLinks").classList.toggle("open");
     });
 
-    // Servizi demo
+    // Servizi dinamici e ordinati
     const services = [
       {
         icon: "📐",
@@ -644,20 +666,25 @@
         desc: "Assistenza per successioni, divisioni, perizie e stime."
       },
       {
+        icon: "📝",
+        name: "Visure e Planimetrie",
+        desc: "Recupero documenti catastali e planimetrie aggiornate."
+      },
+      {
         icon: "🏠",
         name: "Successioni",
         desc: "Gestione completa delle pratiche di successione."
       },
       {
-        icon: "📝",
-        name: "Visure e Planimetrie",
-        desc: "Recupero documenti catastali e planimetrie aggiornate."
+        icon: "💡",
+        name: "Pratiche ENEA",
+        desc: "Gestione e invio delle pratiche ENEA per detrazioni fiscali su interventi di riqualificazione energetica e ristrutturazione edilizia, come previsto dalla normativa vigente."
       }
     ];
     function renderServices() {
       const list = document.getElementById("serviceList");
       list.innerHTML = "";
-      services.forEach(s => {
+      services.forEach((s, i) => {
         const card = document.createElement("div");
         card.className = "service-card";
         card.innerHTML = `
