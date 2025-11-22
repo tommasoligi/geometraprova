@@ -1084,19 +1084,21 @@
       formMessage.style.color = "#2e7d32";
       form.reset();
     });
-    // Bottone torna su
-const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 300) {
-    backToTop.style.display = 'block';
-  } else {
-    backToTop.style.display = 'none';
-  }
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      backToTop.style.display = 'block';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  });
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
 });
-backToTop.addEventListener('click', function() {
-  window.scrollTo({top:0, behavior:'smooth'});
-});
-  </script>
+</script>
   <button id="backToTop" aria-label="Torna in cima" style="display:none;">
   ↑
 </button>
