@@ -18,8 +18,6 @@
       --gradient: linear-gradient(90deg, #b85c38 0%, #fbeee0 100%);
       --gradient-btn: linear-gradient(90deg, #b85c38 0%, #6f4e37 100%);
     }
-    
-    /* Reset e base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body {
@@ -40,8 +38,6 @@
       0% { background-position: 0 0, 0% 50%; }
       100% { background-position: 0 0, 100% 50%; }
     }
-    
-    /* Header e Navbar */
     header {
       background: #1E254E;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -123,8 +119,6 @@
       border: none;
       color: #FFF9B1;
     }
-    
-    /* Responsive Navbar */
     @media (max-width: 700px) {
       .navbar { padding: 1rem; }
       .nav-links {
@@ -143,8 +137,6 @@
       .nav-links.open { display: flex; }
       .hamburger { display: block; }
     }
-    
-    /* Hero */
     .hero-dynamic {
       position: relative;
       display: flex;
@@ -222,12 +214,6 @@
       opacity: 0;
       transition: opacity 0.3s;
       pointer-events: none;
-    }
-
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.7);}
-      80% { opacity: 1; transform: scale(1.1);}
-      100% { opacity: 1; transform: scale(1);}
     }
     .hero-content h1 {
       font-size: 2.7rem;
@@ -343,8 +329,6 @@
       transform: scale(1.08) rotate(0deg);
       box-shadow: 0 8px 32px rgba(184,92,56,0.18);
     }
-    
-    /* Responsive Hero */
     @media (max-width: 900px) {
       .hero-dynamic { flex-direction: column; align-items: stretch; padding: 2.2rem 1rem 1.2rem 1rem; min-height: 240px;}
       .hero-img-wrap { justify-content: flex-start; margin-top: 1.2rem;}
@@ -380,8 +364,6 @@
       .hero-img.main { width: 90px; height: 90px;}
       .hero-img.side { width: 50px; height: 50px;}
     }
-    
-    /* Main e pagine */
     main {
       flex: 1 0 auto;
       min-height: 70vh;
@@ -440,15 +422,11 @@
       background: none;
       text-transform: uppercase;
     }
-    
-    /* Why choose me */
     .why-choose-me {
       background: var(--secondary);
       padding-bottom: 0;
       margin-bottom: 0;
     }
-    
-    /* Progetti */
     .projects {
       padding: 3rem 2rem;
       background: var(--secondary);
@@ -493,8 +471,6 @@
       .projects-list { grid-template-columns: 1fr; }
       .project-card img { height: 140px; }
     }
-    
-    /* Servizi */
     .services {
       padding: 3rem 2rem;
       background: var(--secondary);
@@ -587,13 +563,10 @@
       opacity: 1;
       animation: shine 0.7s linear;
     }
-    
-    /* Profilo */
-    .page#about, .about {
-      background: var(--secondary);
+    .about {
       margin-bottom: 0;
       padding-bottom: 0;
-      border-bottom: none;
+      background: var(--secondary);
     }
     .about-content {
       display: flex;
@@ -621,8 +594,6 @@
       text-transform: uppercase;
     }
     .about-content ul { margin-top: 1rem; padding-left: 1.2rem; }
-    
-    /* Contatti */
     .contact {
       padding: 3rem 2rem;
       background: var(--secondary);
@@ -664,8 +635,6 @@
     textarea { min-height: 90px; resize: vertical; }
     #formMessage { margin-top: 1rem; font-size: 1rem; }
     .contact-info { text-align: center; color: var(--accent); }
-    
-    /* Footer */
     footer {
       background: var(--accent);
       color: var(--white);
@@ -748,8 +717,6 @@
       .map-container { max-width: 100%; }
       .footer-section { margin-bottom: 1.5rem; }
     }
-    
-    /* Bottone torna su */
     #backToTop {
       position: fixed;
       bottom: 32px;
@@ -771,23 +738,10 @@
       background: var(--accent);
       transform: scale(1.08);
     }
-    
-    /* Titoli */
-    .title-main,
-    .section-title,
-    .hero-badge,
-    .about-content h3, {
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #b85c38;
-      background: none;
-      text-shadow: 0 2px 4px #fbeee0, 0 1px 0 #fff;
-    }
   </style>
 </head>
 <body>
+  <body>
   <header>
   <nav class="navbar">
     <div class="logo-header">
@@ -965,6 +919,10 @@
       &copy; 2025 Geometra Ligi Simone. Tutti i diritti riservati.
     </div>
   </footer>
+  <!-- Bottone torna su -->
+  <button id="backToTop" aria-label="Torna in cima" style="display:none;">
+    ↑
+  </button>
   <script>
     // SPA Navigation
     function navigateTo(pageId, event) {
@@ -1084,23 +1042,22 @@
       formMessage.style.color = "#2e7d32";
       form.reset();
     });
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-      backToTop.style.display = 'block';
-    } else {
-      backToTop.style.display = 'none';
-    }
-  });
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-});
-</script>
-  <button id="backToTop" aria-label="Torna in cima" style="display:none;">
-  ↑
-</button>
+
+    // Bottone torna su
+    document.addEventListener('DOMContentLoaded', function() {
+      var backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTop.style.display = 'block';
+        } else {
+          backToTop.style.display = 'none';
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    });
+  </script>
 </body>
 </html>
+
