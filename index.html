@@ -120,7 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 420px;
+  min-height: 340px;
   padding: 3.5rem 2rem 2rem 2rem;
   background: var(--white, #fff);
   overflow: hidden;
@@ -159,9 +159,9 @@
   background: linear-gradient(90deg, #b85c38 60%, #fbeee0 100%);
   color: #fff;
   font-weight: 600;
-  font-size: 1rem;
-  padding: 0.3rem 1.1rem;
-  border-radius: 16px;
+  font-size: 1.1rem;
+  padding: 0.4rem 1.3rem;
+  border-radius: 18px;
   letter-spacing: 1px;
   box-shadow: 0 2px 8px rgba(184,92,56,0.10);
   margin-bottom: 0.2rem;
@@ -173,7 +173,7 @@
   100% { opacity: 1; transform: scale(1);}
 }
 .hero-content h1 {
-  font-size: 2.7rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--primary, #b85c38);
   line-height: 1.1;
@@ -253,14 +253,14 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .hero-img.main {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   z-index: 2;
   transform: rotate(-6deg);
 }
 .hero-img.side {
-  width: 110px;
-  height: 110px;
+  width: 90px;
+  height: 90px;
   z-index: 1;
   margin-left: -40px;
   opacity: 0.85;
@@ -275,7 +275,7 @@
     flex-direction: column;
     align-items: stretch;
     padding: 2.2rem 1rem 1.2rem 1rem;
-    min-height: 340px;
+    min-height: 240px;
   }
   .hero-img-wrap {
     justify-content: flex-start;
@@ -283,9 +283,9 @@
   }
 }
 @media (max-width: 600px) {
-  .hero-content h1 { font-size: 2rem; }
-  .hero-img.main { width: 120px; height: 120px;}
-  .hero-img.side { width: 70px; height: 70px;}
+  .hero-content h1 { font-size: 1.4rem; }
+  .hero-img.main { width: 90px; height: 90px;}
+  .hero-img.side { width: 50px; height: 50px;}
 }
     main {
       flex: 1 0 auto;
@@ -331,20 +331,36 @@
       opacity: 1;
       transform: translateX(0);
     }
+    .services-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0 2rem 0;
+}
     .service-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
+  background: var(--white, #fff);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(184,92,56,0.10);
+  padding: 1.2rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 260px;
+  transition: box-shadow 0.3s, transform 0.3s;
+  min-height: 220px;
+}
   opacity: 0;
   transform: translateY(40px) scale(0.97);
   transition: opacity 0.7s, transform 0.7s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+}
+    .service-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
 }
 .service-card.in-view {
   opacity: 1;
@@ -362,7 +378,20 @@
   margin-bottom: 1rem;
   transition: transform 0.3s;
 }
-.service-card:hover .service-img {
+.service-card h3 {
+  color: var(--primary, #b85c38);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+.service-card p {
+  color: #6f4e37;
+  font-size: 1rem;
+}
+.service-card:hover {
+  box-shadow: 0 8px 32px rgba(184,92,56,0.18);
+  transform: translateY(-8px) scale(1.03);
+}
+.service-card:hover img {
   transform: scale(1.12) rotate(-6deg);
 }
 .service-card .icon {
@@ -833,51 +862,64 @@
   </header>
   <main>
     <div class="page active" id="home">
-      <section class="hero section-animate hero-dynamic">
+     <section class="hero-dynamic">
   <div class="hero-bg-anim"></div>
   <div class="hero-content">
-    <div class="hero-badge">Geometra</div>
-    <h1>
-      <span class="highlight">Ligi Simone</span>
-      <svg class="hero-underline" width="180" height="18" viewBox="0 0 180 18" fill="none"><path d="M2 16C40 2 140 2 178 16" stroke="#b85c38" stroke-width="4" stroke-linecap="round"/></svg>
-    </h1>
-    <p class="hero-desc">Esperienza, tecnologia e assistenza completa per ogni esigenza catastale, edilizia e topografica.</p>
-    <a href="#" class="cta-btn-hero" onclick="navigateTo('contact', event)">
-      <span>Richiedi una consulenza</span>
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:8px;" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <div class="hero-badge">Geometra Ligi Simone</div>
+    <h1>Profilo professionale</h1>
+    <p class="hero-desc">Esperienza, formazione e passione al servizio del cliente. Scopri chi sono e la mia storia professionale.</p>
+  </div>
+  <div class="hero-img-wrap">
+    <img src="https://scontent.fnap7-2.fna.fbcdn.net/v/t39.30808-6/548628742_24723935677224499_3401297397102118355_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VTa-AXUUWzYQ7kNvwEE-yMp&_nc_oc=AdncyE-Qy7K6vdP0HUL6F8PgSkaZ2gNOKj9sawuSNSpKPX1UkESfrhd8sY5aEhOJs9Q&_nc_zt=23&_nc_ht=scontent.fnap7-2.fna&_nc_gid=ZdR9-Pd4zVzQYXdPTCVnKA&oh=00_Afj3mV8-VSFVPOrHkB-5XTsWJNV5BKJglhDFj7SUDfOpsg&oe=69265F48" alt="Geometra Ligi Simone" class="hero-img main" />
+    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Planimetrie" class="hero-img side" />
+  </div>
+</section>
+      <section class="hero-dynamic">
+  <div class="hero-bg-anim"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Geometra Ligi Simone</div>
+    <h1>I miei servizi</h1>
+    <p class="hero-desc">Professionalità e tecnologia per ogni esigenza catastale, edilizia e topografica.</p>
   </div>
   <div class="hero-img-wrap">
     <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Strumenti" class="hero-img main" />
     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Planimetrie" class="hero-img side" />
   </div>
 </section>
-      <section class="projects section-animate">
-        <h2 class="slide-in-right">Progetti realizzati</h2>
-        <div class="projects-list">
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1503389152951-9c3d0c6b7a5a?auto=format&fit=crop&w=600&q=80" alt="Rilievo topografico" />
-            <div>
-              <h3>Rilievo topografico per nuova lottizzazione</h3>
-              <p>Esecuzione di rilievi GPS e laser scanner per la progettazione di una nuova area residenziale a Pesaro.</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Pratica edilizia" />
-            <div>
-              <h3>Pratica edilizia per ristrutturazione</h3>
-              <p>Gestione completa delle pratiche edilizie e direzione lavori per la ristrutturazione di un edificio storico.</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80" alt="Successione e divisione" />
-            <div>
-              <h3>Successione e divisione ereditaria</h3>
-              <p>Consulenza tecnica e pratiche catastali per la suddivisione di beni immobili tra eredi.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
+<!-- Card servizi sotto la hero -->
+<div class="services-cards">
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80" alt="Pratiche Catastali">
+    <h3>Pratiche Catastali</h3>
+    <p>Volture, visure, planimetrie, accatastamenti e variazioni.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=100&q=80" alt="Pratiche Edilizie">
+    <h3>Pratiche Edilizie</h3>
+    <p>CILA, SCIA, permessi di costruire, sanatorie e condoni.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=100&q=80" alt="Rilievi Topografici">
+    <h3>Rilievi Topografici</h3>
+    <p>Rilievi GPS, laser scanner, tracciamenti e frazionamenti.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=100&q=80" alt="Consulenza Tecnica">
+    <h3>Consulenza Tecnica</h3>
+    <p>Assistenza per successioni, divisioni, perizie e stime.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=100&q=80" alt="Visure e Planimetrie">
+    <h3>Visure e Planimetrie</h3>
+    <p>Recupero documenti catastali e planimetrie aggiornate.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://images.unsplash.com/photo-1503389152951-9c3d0c6b7a5a?auto=format&fit=crop&w=100&q=80" alt="Successioni">
+    <h3>Successioni</h3>
+    <p>Gestione completa delle pratiche di successione.</p>
+  </div>
+</div>
     </div>
     <div class="page" id="services">
       <section class="services section-animate">
