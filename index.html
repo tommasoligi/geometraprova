@@ -190,19 +190,40 @@
       to { opacity: 1; transform: translateX(0);}
     }
     .hero-badge {
-      display: inline-block;
-      background: var(--gradient);
+      display: inline-flex;
+      align-items: center;
+      background: var(--gradient-btn);
       color: #fff;
       font-weight: 700;
       font-size: 1.2rem;
       font-family: 'Montserrat', Arial, sans-serif;
-      padding: 0.4rem 1.3rem;
-      border-radius: 18px;
+      padding: 0.8rem 2.1rem;
+      border: none;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(184,92,56,0.10);
+      cursor: default;
+      text-decoration: none;
+      margin-bottom: 1.2rem;
+      margin-top: 0;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
       letter-spacing: 1px;
-      box-shadow: 0 2px 8px rgba(184,92,56,0.10);
-      margin-bottom: 0.2rem;
-      animation: popIn 0.7s cubic-bezier(.4,0,.2,1);
+      animation: fadeInUp 1.3s cubic-bezier(.4,0,.2,1);
     }
+    .hero-badge::after {
+      content: "";
+      position: absolute;
+      left: -50%;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
     @keyframes popIn {
       0% { opacity: 0; transform: scale(0.7);}
       80% { opacity: 1; transform: scale(1.1);}
@@ -671,6 +692,12 @@
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
       color: #ffe5d0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: none;
+      text-shadow: none;
     }
     .footer-section a {
       color: #ffe5d0;
@@ -749,8 +776,7 @@
     .title-main,
     .section-title,
     .hero-badge,
-    .about-content h3,
-    .footer-section h4 {
+    .about-content h3, {
       font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 900;
       letter-spacing: 2px;
@@ -807,11 +833,13 @@
     <p style="font-family:'Montserrat',Arial,sans-serif;">Oltre 35 anni di attività nel settore tecnico e catastale.</p>
       </li>
       <li class="slide-in-right" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;">
+        <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Efficienza</strong>
         <p style="font-family:'Montserrat',Arial,sans-serif;">
           Precisione, puntualità e attenzione ad ogni dettaglio.
         </p>
       </li>
       <li class="slide-in-left" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;">
+        <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Efficacia</strong>
         <p style="font-family:'Montserrat',Arial,sans-serif;">
           Supporto costante e consulenza dedicata in ogni fase del lavoro.
         </p>
