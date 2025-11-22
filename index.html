@@ -889,38 +889,17 @@
 </section>
 
 <!-- Card servizi sotto la hero -->
-<div class="services-cards">
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80" alt="Pratiche Catastali">
-    <h3>Pratiche Catastali</h3>
-    <p>Volture, visure, planimetrie, accatastamenti e variazioni.</p>
-  </div>
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=100&q=80" alt="Pratiche Edilizie">
-    <h3>Pratiche Edilizie</h3>
-    <p>CILA, SCIA, permessi di costruire, sanatorie e condoni.</p>
-  </div>
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=100&q=80" alt="Rilievi Topografici">
-    <h3>Rilievi Topografici</h3>
-    <p>Rilievi GPS, laser scanner, tracciamenti e frazionamenti.</p>
-  </div>
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=100&q=80" alt="Consulenza Tecnica">
-    <h3>Consulenza Tecnica</h3>
-    <p>Assistenza per successioni, divisioni, perizie e stime.</p>
-  </div>
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=100&q=80" alt="Visure e Planimetrie">
-    <h3>Visure e Planimetrie</h3>
-    <p>Recupero documenti catastali e planimetrie aggiornate.</p>
-  </div>
-  <div class="service-card">
-    <img src="https://images.unsplash.com/photo-1503389152951-9c3d0c6b7a5a?auto=format&fit=crop&w=100&q=80" alt="Successioni">
-    <h3>Successioni</h3>
-    <p>Gestione completa delle pratiche di successione.</p>
-  </div>
+<div class="project-card slide-in-right">
+  <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Rilievo Topografico">
+  <h3>Rilievo Topografico in Area Urbana</h3>
+  <p>Rilievo GPS e laser scanner per mappatura precisa di aree urbane.</p>
 </div>
+<div class="project-card slide-in-right">
+  <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Pratiche Catastali">
+  <h3>Pratiche Catastali per Nuovo Fabbricato</h3>
+  <p>Gestione completa di volture, accatastamenti e variazioni catastali.</p>
+</div>
+
     </div>
     <div class="page" id="services">
       <section class="services section-animate">
@@ -1089,10 +1068,11 @@ const services = [
 
 function renderServices() {
   const list = document.getElementById("serviceList");
+  if (!list) return;
   list.innerHTML = "";
-  services.forEach((s, i) => {
+  services.forEach((s, index) => {
     const card = document.createElement("div");
-    card.className = "service-card";
+    card.className = "service-card section-animate slide-in-right"; // Aggiunte classi animazione
     card.innerHTML = `
       <img class="service-img" src="${s.img}" alt="${s.name}">
       <div class="icon">${s.icon}</div>
@@ -1102,6 +1082,9 @@ function renderServices() {
     `;
     list.appendChild(card);
   });
+  animateSections();
+}
+
   // Animazione entrata
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
