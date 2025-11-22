@@ -894,6 +894,109 @@
     gap: 0.7rem;
   }
 }
+    .hero-flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.hero-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.hero-left {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 320px;
+  gap: 0.7rem;
+  flex: 1 1 0;
+}
+
+.hero-center {
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  max-width: 340px;
+  flex: 1 1 0;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.hero-right {
+  align-items: flex-end;
+  gap: 1.2rem;
+  flex: 1 1 0;
+}
+
+.review-carousel {
+  width: 100%;
+  max-width: 340px;
+  margin: 0.5rem auto;
+  min-height: 90px;
+  position: relative;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(184,92,56,0.10);
+  padding: 1.1rem 1.2rem 0.8rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.review-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.7s;
+}
+.review-slide.active {
+  display: flex;
+}
+.review-text {
+  font-size: 1.05rem;
+  color: var(--accent);
+  font-family: 'Poppins', Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+.review-author {
+  font-size: 0.98rem;
+  color: #b85c38;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive: su mobile, tutto in colonna */
+@media (max-width: 900px) {
+  .hero-flex-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .hero-left, .hero-center, .hero-right {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
+  }
+  .hero-center {
+    margin: 0.5rem 0;
+  }
+  .hero-right {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+}
     #backToTop {
       position: fixed;
       bottom: 32px;
@@ -978,22 +1081,20 @@
     <section class="why-choose-me section-animate" style="margin-bottom: 4rem;">
   <h2 class="section-title slide-in-left">Perché scegliere me</h2>
   <div style="max-width:700px;margin:0 auto; text-align:center;">
-  <p class="slide-in-right hero-desc" style="margin-bottom:2rem;">
-    Affidarsi a me significa scegliere un professionista che mette al centro la chiarezza, la trasparenza e la cura di ogni dettaglio.
-  </p>
+    <p class="slide-in-right hero-desc" style="margin-bottom:2rem;">
+      Affidarsi a me significa scegliere un professionista che mette al centro la chiarezza, la trasparenza e la cura di ogni dettaglio.
+    </p>
     <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;">
-  <li class="slide-in-left" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;text-align:center;">
-    <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Esperienza</strong>
-    <p style="font-family:'Montserrat',Arial,sans-serif;">Oltre 35 anni di attività nel settore tecnico e catastale.</p>
+      <li class="slide-in-left" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;text-align:center;">
+        <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Esperienza</strong>
+        <p style="font-family:'Montserrat',Arial,sans-serif;">Oltre 35 anni di attività nel settore tecnico e catastale.</p>
       </li>
       <li class="slide-in-right" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;">
-        <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Efficienza</strong>
         <p style="font-family:'Montserrat',Arial,sans-serif;">
           Precisione, puntualità e attenzione ad ogni dettaglio.
         </p>
       </li>
       <li class="slide-in-left" style="flex:1 1 220px;min-width:220px;max-width:300px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(184,92,56,0.08);padding:1.2rem;">
-        <strong style="color:#b85c38;font-family:'Montserrat',Arial,sans-serif;font-size:1.1rem;">Efficacia</strong>
         <p style="font-family:'Montserrat',Arial,sans-serif;">
           Supporto costante e consulenza dedicata in ogni fase del lavoro.
         </p>
