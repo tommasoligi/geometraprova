@@ -753,6 +753,50 @@
       .map-container { max-width: 100%; }
       .footer-section { margin-bottom: 1.5rem; }
     }
+    /* RECENSIONI */
+    .review-carousel {
+  width: 100%;
+  max-width: 340px;
+  margin: 1rem 0 0.5rem 0;
+  min-height: 90px;
+  position: relative;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(184,92,56,0.10);
+  padding: 1.1rem 1.2rem 0.8rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.review-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.7s;
+}
+.review-slide.active {
+  display: flex;
+}
+.review-text {
+  font-size: 1.05rem;
+  color: var(--accent);
+  font-family: 'Poppins', Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+.review-author {
+  font-size: 0.98rem;
+  color: #b85c38;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
     #backToTop {
       position: fixed;
       bottom: 32px;
@@ -804,6 +848,20 @@
         <div class="hero-content">
           <div class="hero-badge cta-btn-hero slide-in-left" style="margin-bottom:1.2rem;display:inline-block;cursor:default;">Geometra Ligi Simone</div>
           <p class="hero-desc">Esperienza, precisione e tecnologia per ogni esigenza catastale, edilizia e topografica. Scopri i nostri progetti e servizi!</p>
+          <div class="review-carousel" id="reviewCarousel">
+  <div class="review-slide active">
+    <p class="review-text">“Servizio impeccabile, grande professionalità e disponibilità.”</p>
+    <span class="review-author">- Mario R.</span>
+  </div>
+  <div class="review-slide">
+    <p class="review-text">“Consigliato! Pratiche veloci e spiegazioni chiare.”</p>
+    <span class="review-author">- Laura B.</span>
+  </div>
+  <div class="review-slide">
+    <p class="review-text">“Ottima esperienza, mi sono sentito seguito in ogni fase.”</p>
+    <span class="review-author">- Giovanni S.</span>
+  </div>
+</div>
           <a href="#" class="cta-btn-hero" onclick="navigateTo('services', event)">Scopri i servizi</a>
         </div>
         <div class="hero-img-wrap">
@@ -977,7 +1035,15 @@
     document.getElementById("hamburger").addEventListener("click", function() {
       document.getElementById("navLinks").classList.toggle("open");
     });
-
+     // Carousel recensioni
+    const slides = document.querySelectorAll('#reviewCarousel .review-slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3500);
+  });
     // Servizi dinamici
     const services = [
       {
@@ -1078,6 +1144,7 @@
       formMessage.style.color = "#2e7d32";
       form.reset();
     });
+    
 
     // Bottone torna su
     document.addEventListener('DOMContentLoaded', function() {
