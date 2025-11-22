@@ -15,6 +15,8 @@
       --white: #fff;
       --radius: 10px;
       --shadow: 0 2px 8px rgba(0,0,0,0.07);
+      --gradient: linear-gradient(90deg, #b85c38 0%, #fbeee0 100%);
+      --gradient-btn: linear-gradient(90deg, #b85c38 0%, #6f4e37 100%);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
@@ -123,6 +125,7 @@
       .nav-links.open { display: flex; }
       .hamburger { display: block; }
     }
+    /* Hero */
     .hero-dynamic {
       position: relative;
       display: flex;
@@ -130,7 +133,7 @@
       justify-content: space-between;
       min-height: 340px;
       padding: 3.5rem 2rem 2rem 2rem;
-      background: var(--white, #fff);
+      background: transparent;
       overflow: hidden;
       border-radius: 0 0 32px 32px;
       box-shadow: 0 8px 32px rgba(184,92,56,0.08);
@@ -169,7 +172,7 @@
     }
     .hero-badge {
       display: inline-block;
-      background: linear-gradient(90deg, #b85c38 60%, #fbeee0 100%);
+      background: var(--gradient);
       color: #fff;
       font-weight: 700;
       font-size: 1.2rem;
@@ -187,7 +190,7 @@
       100% { opacity: 1; transform: scale(1);}
     }
     .hero-content h1 {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 900;
       color: var(--primary, #b85c38);
@@ -195,10 +198,12 @@
       margin-bottom: 0.2rem;
       letter-spacing: 1px;
       text-shadow: 0 2px 8px #fbeee0;
-      background: linear-gradient(90deg, #b85c38 60%, #fbeee0 100%);
+      background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     .hero-desc {
       font-size: 1.2rem;
@@ -215,7 +220,7 @@
     .cta-btn-hero {
       display: inline-flex;
       align-items: center;
-      background: linear-gradient(90deg, #b85c38 60%, #fbeee0 100%);
+      background: var(--gradient-btn);
       color: #fff;
       font-weight: 700;
       font-size: 1.1rem;
@@ -229,11 +234,34 @@
       margin-top: 0.5rem;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       animation: fadeInUp 1.3s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn-hero::after {
+      content: "";
+      position: absolute;
+      left: -50%;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
     }
     .cta-btn-hero:hover {
-      background: linear-gradient(90deg, #6f4e37 60%, #b85c38 100%);
-      transform: scale(1.06) translateY(-2px);
+      background: linear-gradient(90deg, #6f4e37 0%, #b85c38 100%);
+      transform: scale(1.08) translateY(-2px);
       box-shadow: 0 8px 32px rgba(184,92,56,0.18);
+    }
+    .cta-btn-hero:hover::after {
+      opacity: 1;
+      animation: shine 0.7s linear;
+    }
+    @keyframes shine {
+      0% { left: -50%; opacity: 0.2;}
+      50% { left: 50%; opacity: 0.5;}
+      100% { left: 120%; opacity: 0;}
     }
     .hero-img-wrap {
       position: relative;
@@ -282,16 +310,18 @@
     .slide-in-right.in-view { opacity: 1; transform: translateX(0);}
     .section-title {
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 900;
       color: var(--primary);
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-bottom: 1.2rem;
-      text-shadow: 0 2px 8px #fbeee0;
-      background: linear-gradient(90deg, #b85c38 60%, #fbeee0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      text-align: center;
+      text-shadow: 0 4px 16px #fbeee0, 0 1px 0 #fff;
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+      text-transform: uppercase;
     }
     .projects { padding: 3rem 2rem; background: var(--secondary);}
     .projects-list {
@@ -322,6 +352,8 @@
       font-size: 1.15rem;
       font-family: 'Montserrat', Arial, sans-serif;
       font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .project-card p {
       color: var(--text);
@@ -364,6 +396,8 @@
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 1.1rem;
       font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .service-card p {
       font-size: 1rem;
@@ -382,18 +416,48 @@
     .service-card:hover .icon { transform: rotate(10deg) scale(1.1);}
     .service-card:hover .service-img { transform: scale(1.12) rotate(-6deg);}
     .service-btn {
-      background: var(--primary);
+      background: var(--gradient-btn);
       color: var(--white);
       border: none;
-      border-radius: 6px;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.95rem;
+      border-radius: 24px;
+      padding: 0.7rem 1.7rem;
+      font-size: 1.05rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       margin-top: auto;
       align-self: flex-end;
+      box-shadow: 0 2px 8px rgba(184,92,56,0.10);
+      position: relative;
+      overflow: hidden;
     }
-    .service-btn:hover { background: var(--accent); transform: scale(1.07); }
+    .service-btn::after {
+      content: "";
+      position: absolute;
+      left: -50%;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .service-btn:hover {
+      background: linear-gradient(90deg, #6f4e37 0%, #b85c38 100%);
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 8px 32px rgba(184,92,56,0.18);
+    }
+    .service-btn:hover::after {
+      opacity: 1;
+      animation: shine 0.7s linear;
+    }
+    @keyframes shine {
+      0% { left: -50%; opacity: 0.2;}
+      50% { left: 50%; opacity: 0.5;}
+      100% { left: 120%; opacity: 0;}
+    }
     .about { padding: 3rem 2rem; background: var(--secondary);}
     .about-content {
       display: flex;
@@ -417,9 +481,15 @@
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 1.5rem;
       font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
     .about-content ul { margin-top: 1rem; padding-left: 1.2rem; }
     .contact { padding: 3rem 2rem; background: var(--white);}
+    .contact .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
     form {
       max-width: 500px;
       margin: 0 auto 2rem auto;
@@ -605,7 +675,7 @@
         <div class="about-content">
           <img class="slide-in-left" src="https://scontent.fnap7-2.fna.fbcdn.net/v/t39.30808-6/548628742_24723935677224499_3401297397102118355_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VTa-AXUUWzYQ7kNvwEE-yMp&_nc_oc=AdncyE-Qy7K6vdP0HUL6F8PgSkaZ2gNOKj9sawuSNSpKPX1UkESfrhd8sY5aEhOJs9Q&_nc_zt=23&_nc_ht=scontent.fnap7-2.fna&_nc_gid=ZdR9-Pd4zVzQYXdPTCVnKA&oh=00_Afj3mV8-VSFVPOrHkB-5XTsWJNV5BKJglhDFj7SUDfOpsg&oe=69265F48" alt="Geometra Ligi Simone" />
           <div class="slide-in-right">
-            <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.5rem;font-weight:900;color:var(--accent);margin-bottom:0.5rem;">Ligi Simone</h3>
+            <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.5rem;font-weight:900;color:var(--accent);margin-bottom:0.5rem;letter-spacing:1px;text-transform:uppercase;">Ligi Simone</h3>
             <p>Geometra abilitato, iscritto all’albo, specializzato in pratiche catastali, edilizie e rilievi topografici. Attento alle esigenze del cliente e costantemente aggiornato sulle normative.</p>
             <ul>
               <li>Laurea in Tecniche per l’Edilizia</li>
@@ -619,7 +689,7 @@
     <!-- CONTATTI -->
     <div class="page" id="contact">
       <section class="contact section-animate">
-        <h2 class="section-title slide-in-left">Contattami</h2>
+        <h2 class="section-title slide-in-left" style="text-align:center;">Contattami</h2>
         <form id="contactForm" class="slide-in-right" method="POST" action="mailto:info@simoneligi.it" enctype="text/plain">
           <div class="form-group">
             <label for="name">Nome</label>
@@ -641,7 +711,7 @@
             <label for="message">Messaggio</label>
             <textarea id="message" name="message" required></textarea>
           </div>
-          <button type="submit" class="cta-btn">Invia richiesta</button>
+          <button type="submit" class="service-btn" style="display:block;margin:0 auto;">Invia richiesta</button>
           <div id="formMessage"></div>
         </form>
       </section>
@@ -765,7 +835,7 @@
         card.innerHTML = `
           <img class="service-img" src="${s.img}" alt="${s.name}">
           <div class="icon">${s.icon}</div>
-          <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.15rem;font-weight:900;color:var(--accent);margin-bottom:0.5rem;">${s.name}</h3>
+          <h3 style="font-family:'Montserrat',Arial,sans-serif;font-size:1.15rem;font-weight:900;color:var(--accent);margin-bottom:0.5rem;letter-spacing:1px;text-transform:uppercase;">${s.name}</h3>
           <p>${s.desc}</p>
           <a href="#" class="service-btn" onclick="navigateTo('contact', event)">Scopri di più</a>
         `;
