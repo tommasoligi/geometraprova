@@ -610,7 +610,25 @@ footer {
   .map-container { max-width: 100%; }
   .footer-section { margin-bottom: 1.5rem; }
 }
-
+    footer {
+      background: var(--accent);
+      color: var(--white);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      flex-shrink: 0;
+      margin-top: 48px; /* margine superiore aumentato */
+      padding-top: 32px; /* padding top aumentato */
+    }
+    /* Stacca la pagina profilo dal footer */
+    #about {
+      margin-bottom: 48px;
+    }
+    /* Rimuovi eventuale banda marrone: assicurati che il main abbia background trasparente o var(--secondary) */
+    main {
+      flex: 1 0 auto;
+      min-height: 70vh;
+      background: var(--secondary);
+      padding-bottom: 0;
+    }
 /* Animazioni generali */
 .section-animate { opacity: 0; transform: translateY(60px) scale(0.98); transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1); will-change: opacity, transform;}
 .section-animate.in-view { opacity: 1; transform: translateY(0) scale(1);}
