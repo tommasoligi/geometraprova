@@ -843,6 +843,57 @@
   from { opacity: 0; transform: translateY(20px);}
   to { opacity: 1; transform: translateY(0);}
 }
+    .hero-flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.hero-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.hero-left {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 320px;
+  gap: 0.7rem;
+}
+
+.hero-center {
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  max-width: 340px;
+}
+
+.hero-right {
+  align-items: flex-end;
+  gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .hero-flex-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .hero-left, .hero-center, .hero-right {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+  .hero-right {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+}
     #backToTop {
       position: fixed;
       bottom: 32px;
@@ -891,31 +942,37 @@
     <div class="page active" id="home">
       <section class="hero-dynamic">
   <div class="hero-bg-anim"></div>
-  <div class="hero-content">
-    <div class="hero-badge cta-btn-hero slide-in-left in-view" style="margin-bottom:1.2rem;display:inline-block;cursor:default;background: var(--gradient-btn);color:#fff;-webkit-text-fill-color: #fff;text-shadow:none;">
-      Geometra Ligi Simone
+  <div class="hero-flex-row">
+    <!-- Colonna sinistra: paragrafo e bottone -->
+    <div class="hero-col hero-left">
+      <div class="hero-badge cta-btn-hero slide-in-left in-view" style="margin-bottom:1.2rem;display:inline-block;cursor:default;background: var(--gradient-btn);color:#fff;-webkit-text-fill-color: #fff;text-shadow:none;">
+        Geometra Ligi Simone
+      </div>
+      <p class="hero-desc">Esperienza, precisione e tecnologia per ogni esigenza catastale, edilizia e topografica. Scopri i nostri progetti e servizi!</p>
+      <a href="#" class="cta-btn-hero" onclick="navigateTo('services', event)">Scopri i servizi</a>
     </div>
-    <p class="hero-desc">Esperienza, precisione e tecnologia per ogni esigenza catastale, edilizia e topografica. Scopri i nostri progetti e servizi!</p>
-    <!-- Carousel recensioni -->
-    <div class="review-carousel" id="reviewCarousel">
-      <div class="review-slide active">
-        <p class="review-text">“Servizio impeccabile, grande professionalità e disponibilità.”</p>
-        <span class="review-author">- Mario R.</span>
-      </div>
-      <div class="review-slide">
-        <p class="review-text">“Consigliato! Pratiche veloci e spiegazioni chiare.”</p>
-        <span class="review-author">- Laura B.</span>
-      </div>
-      <div class="review-slide">
-        <p class="review-text">“Ottima esperienza, mi sono sentito seguito in ogni fase.”</p>
-        <span class="review-author">- Giovanni S.</span>
+    <!-- Colonna centrale: recensioni -->
+    <div class="hero-col hero-center">
+      <div class="review-carousel" id="reviewCarousel">
+        <div class="review-slide active">
+          <p class="review-text">“Servizio impeccabile, grande professionalità e disponibilità.”</p>
+          <span class="review-author">- Mario R.</span>
+        </div>
+        <div class="review-slide">
+          <p class="review-text">“Consigliato! Pratiche veloci e spiegazioni chiare.”</p>
+          <span class="review-author">- Laura B.</span>
+        </div>
+        <div class="review-slide">
+          <p class="review-text">“Ottima esperienza, mi sono sentito seguito in ogni fase.”</p>
+          <span class="review-author">- Giovanni S.</span>
+        </div>
       </div>
     </div>
-    <a href="#" class="cta-btn-hero" onclick="navigateTo('services', event)">Scopri i servizi</a>
-  </div>
-  <div class="hero-img-wrap">
-    <img src="https://plus.unsplash.com/premium_photo-1663041626408-38295872c473?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z2VvbWV0cmElMjBsYXZvcm98ZW58MHx8MHx8fDA%3D" alt="Strumenti" class="hero-img main">
-    <img src="https://plus.unsplash.com/premium_photo-1661390005107-58d332ac4ce7?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGdlb21ldHJhJTIwbGF2b3JvfGVufDB8fDB8fHww" alt="Planimetrie" class="hero-img side">
+    <!-- Colonna destra: immagini -->
+    <div class="hero-col hero-right hero-img-wrap">
+      <img src="https://plus.unsplash.com/premium_photo-1663041626408-38295872c473?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Z2VvbWV0cmElMjBsYXZvcm98ZW58MHx8MHx8fDA%3D" alt="Strumenti" class="hero-img main">
+      <img src="https://plus.unsplash.com/premium_photo-1661390005107-58d332ac4ce7?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fGdlb21ldHJhJTIwbGF2b3JvfGVufDB8fDB8fHww" alt="Planimetrie" class="hero-img side">
+    </div>
   </div>
 </section>
     <section class="why-choose-me section-animate" style="margin-bottom: 4rem;">
